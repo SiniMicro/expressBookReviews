@@ -21,9 +21,9 @@ public_users.post("/register", (req,res) => {
 });
 
 // Get the book list available in the shop
-public_users.get('/',function (req, res) {
- try {
-        res.status(200).json(books);  // Directly returning the books object
+public_users.get('/',async function (req, res) {
+ try {       
+        res.status(200).json(await books);  // Directly returning the books object
     } catch (error) {
         res.status(500).json({ message: "Error fetching book list", error: error.message });
     }
