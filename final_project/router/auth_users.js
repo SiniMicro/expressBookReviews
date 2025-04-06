@@ -60,56 +60,6 @@ regd_users.post("/login", (req,res) => {
 
 });
 
-// const verifyToken = (req, res, next) => {
-//     const authHeader = req.headers["authorization"];
-//     console.log("Authorization Header:", authHeader);
-
-//     if (!authHeader) {
-//         return res.status(403).json({ message: "User not logged in - No Authorization Header" });
-//     }
-
-//     const token = authHeader.split(" ")[1];
-//     console.log("Extracted Token:", token);
-
-//     jwt.verify(token, "access", (err, decoded) => {
-//         if (err) {
-//             console.log("Token Verification Failed:", err.message);
-//             return res.status(403).json({ message: "Invalid token" });
-//         }
-//         req.username = decoded.username;
-//         next();
-//     });
-// };
-
-// // Add a book review
-// regd_users.put('/auth/review/:isbn', (req, res) => {
-//     const {isbn} = req.params;
-//     const {reviews} = req.body;
-//     const username = req.session.username; // Extracted from JWT token
-//     if (!username) {
-//         return res.status(401).send('User not logged in');
-//     }
-//     if (!reviews) {
-//         return res.status(400).json({ message: "Review cannot be empty." });
-//     }
-
-//     if (!books[isbn]) {
-//         return res.status(404).json({ message: "Book not found." });
-//     }
-
-//     // Initialize reviews object if not present
-//     if (!books[isbn].reviews) {
-//         books[isbn].reviews = {};
-//     }
-
-//     // Add or update review for the user
-//     books[isbn].reviews[username] = reviews;
-
-//     return res.status(200).json({ 
-//         message: "Review added/updated successfully!", 
-//         reviews: books[isbn].reviews 
-//     });
-// });
 
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers["authorization"];
